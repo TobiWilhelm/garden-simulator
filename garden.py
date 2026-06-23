@@ -98,6 +98,8 @@ def harvest(garden, row, col):
 
     if harvested_crop == "tomato":
         create_tomato_harvest_file()
+    else:
+        print("[Info] The crop {0} has no file entry.".format(harvested_crop))
 
     return harvested_crop
 
@@ -113,5 +115,7 @@ def create_tomato_harvest_file():
     line = f"harvested 1 tomato {current_datetime}\n"
     with target_file.open("a", encoding="utf-8") as file:
         file.write(line)
+
+    print("Created file 'tomato.txt' at {0}".format(current_datetime))
 
     ### Aufgabe 3 Ende

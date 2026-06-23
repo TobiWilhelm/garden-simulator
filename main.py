@@ -50,9 +50,10 @@ def print_help_table():
             "Plant a crop in a hole (available crops: " + ", ".join(CROPS) + ")",
             "plant 1 2 carrot",
         ),
+        ("quit", "Exit the simulator", "quit"),
         ("water row col", "Water a seed cell", "water 1 2"),
         ("day", "Advance simulation by one day", "day"),
-        ("harvest row col", "Harvest a ripe crop", "harvest 1 2"),
+        ("harvest row col", "Harvest a ripe crop", "harvest 1 2")
     ]
     ### Ende Aufgabe 2
 

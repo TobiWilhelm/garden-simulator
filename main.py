@@ -1,7 +1,7 @@
 from cli_view import GardenPrinter
 from garden import advance_day, create_garden, dig, harvest, plant, water
 
-CROPS = ["carrot", "tomato", "bean"]
+CROPS = ["carrot", "tomato", "bean", "potato"]
 
 COMMAND_COL_WIDTH = 18
 DESCRIPTION_COL_WIDTH = 52

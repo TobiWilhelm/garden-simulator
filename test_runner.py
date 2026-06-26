@@ -1,4 +1,3 @@
-import ast
 import contextlib
 import importlib
 import io
@@ -61,42 +60,21 @@ def test_task_1_tomato_cli_cycle():
 
 
 def test_task_2_quit_help_entry():
-    source = (PROJECT_DIR / "main.py").read_text(encoding="utf-8")
-    tree = ast.parse(source, filename="main.py")
-    help_function = next(
-        (
-            node
-            for node in tree.body
-            if isinstance(node, ast.FunctionDef) and node.name == "print_help_table"
-        ),
-        None,
+    main_module = import_fresh("main")[0]
+    output = io.StringIO()
+    with contextlib.redirect_stdout(output):
+        main_module.print_help_table()
+
+    help_text = output.getvalue()
+    require("quit" in help_text, "The help output must contain the command name 'quit'.")
+    require(
+        "Exit the simulator" in help_text,
+        "The help output must contain the description 'Exit the simulator'.",
     )
-    require(help_function is not None, "Function print_help_table() was not found.")
-
-    rows_list = None
-    for node in help_function.body:
-        if (
-            isinstance(node, ast.Assign)
-            and len(node.targets) == 1
-            and isinstance(node.targets[0], ast.Name)
-            and node.targets[0].id == "rows"
-            and isinstance(node.value, ast.List)
-        ):
-            rows_list = node.value
-            break
-
-    require(rows_list is not None, "The rows list in print_help_table() was not found.")
-    expected_row = ("quit", "Exit the simulator", "quit")
-    rows = []
-    for element in rows_list.elts:
-        if isinstance(element, ast.Tuple) and len(element.elts) == 3:
-            if all(
-                isinstance(item, ast.Constant) and isinstance(item.value, str)
-                for item in element.elts
-            ):
-                rows.append(tuple(item.value for item in element.elts))
-
-    require(expected_row in rows, f"The help rows must contain {expected_row!r}.")
+    require(
+        any("quit" in line and "Exit the simulator" in line for line in help_text.splitlines()),
+        "The quit command and description must appear together in the help table.",
+    )
 
 
 def test_task_3_tomato_creation_message():

@@ -53,6 +53,7 @@ def print_help_table():
         ("water row col", "Water a seed cell", "water 1 2"),
         ("day", "Advance simulation by one day", "day"),
         ("harvest row col", "Harvest a ripe crop", "harvest 1 2"),
+        ("quit", "Exit the simulator", "quit")
     ]
     ### Ende Aufgabe 2
 

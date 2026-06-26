@@ -10,7 +10,7 @@
     Die Aufgabe ist im Code mittels Kommentarblöcken markiert.
 
 
-3. Wenn eine Tomate geerntet wird, wird eine Datei names tomato.txt erstellt. Der User soll über das Erstellen der tomato.txt informiert werden. Der Satz "Created file tomato.txt at \<current datetime>" soll in der Konsole ausgegeben werden. Die Aufgabe ist im Code mittels Kommentarblöcken markiert.
+3. Wenn eine Tomate geerntet wird, wird eine Datei names tomato.txt erstellt. Der User soll über das Erstellen der tomato.txt informiert werden. Der Satz "Created file 'tomato.txt' at \<current datetime>" soll in der Konsole ausgegeben werden. Die Aufgabe ist im Code mittels Kommentarblöcken markiert.
 
     Beispiel:
    1. Created file 'tomato.txt' at 18.05.2026 18:36:22.
